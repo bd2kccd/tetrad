@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 1.0//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_1_0b1.dtd">
+<exercise id="cl31_u5m16ex11"
+          instructions="The aim of this exercise is to show you how interventions can help you identify the true graph. You are asked to discover the correct graph between X and Y. Set up two experiments. In the first you ideally intervene on X by randomizing X and in the second one you ideally intervene on Y by randomizing Y. Choose a large sample size and then check in the predictions and results window whether X and Y are independent in each of the experiments. Then draw a hypothetical graph that you think explains the results you find. You can check the independence relations implied by your hypothetical graph in the predictions and results window by filling in the columns &quot;student guesses&quot;. Make sure they coincide with the results you get from your experiment before you check your answer."
+          goal="find-correct-graph" include_student_guess="true">
+    <title>cl31_u5m16ex11</title>
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="yes" hidable="yes"/>
+        <population included="yes" hidable="yes"/>
+        <experimentalSetup included="yes"/>
+        <sample included="yes"/>
+        <independencies included="yes"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="X" index="0" x="123" y="159">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Y" index="1" x="213" y="277">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="X">
+                <parent name="Y" index="0"/>
+            </parentsFor>
+            <parentsFor name="Y"/>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="X" numRows="2" numCols="2">
+                <row>0.8301 0.1699</row>
+                <row>0.0766 0.9234</row>
+            </cpt>
+            <cpt variable="Y" numRows="1" numCols="2">
+                <row>0.4627 0.5373</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+</exercise>

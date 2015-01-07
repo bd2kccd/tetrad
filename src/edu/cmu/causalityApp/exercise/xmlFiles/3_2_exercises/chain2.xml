@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 1.1//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_1_1.dtd">
+<exercise version="3.2" id="chain2"
+          instructions="Construct a graph (in the hypothesis graph window) in which there is a causal chain from Y to X to Z, and direct cause from Y to Z. Once you are done, click on &quot;Check my answer&quot;."
+          goal="find-correct-graph" include_student_guess="false">
+    <title>chain2</title>
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="no" hidable="no"/>
+        <population included="no" hidable="no"/>
+        <experimentalSetup included="no"/>
+        <sample included="no"/>
+        <independencies included="no"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="no"/>
+    </windows>
+    <sem>
+        <semVariables>
+            <continuousVariable name="y" latent="no" x="119" y="69"/>
+            <continuousVariable name="x" latent="no" x="75" y="165"/>
+            <continuousVariable name="z" latent="no" x="254" y="158"/>
+        </semVariables>
+        <edges>
+            <edge causeNode="y" effectNode="x" value="-0.7781813749284683" fixed="false"/>
+            <edge causeNode="x" effectNode="z" value="0.831484852293592" fixed="false"/>
+            <edge causeNode="y" effectNode="z" value="1.052409841359533" fixed="false"/>
+        </edges>
+        <marginalErrorDistribution>
+            <normal variable="y" mean="0.0" variance="2.5356592517802348"/>
+            <normal variable="E_x" mean="0.0" variance="2.7925698007036424"/>
+            <normal variable="E_z" mean="0.0" variance="2.2317772008869667"/>
+        </marginalErrorDistribution>
+        <jointErrorDistribution/>
+    </sem>
+</exercise>

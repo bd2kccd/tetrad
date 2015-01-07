@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 1.1//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_1_1.dtd">
+<exercise version="3.2" id="cl31_u1m4ex6"
+          instructions="Construct a graph in which Z is a common effect of X and Y. You can do so by clicking on the hypothesis graph symbol and constructing your graph in the window that opens. Once you are done, click on &quot;Check my answer&quot;."
+          goal="find-correct-graph" include_student_guess="false">
+    <title>cl31_u1m4ex6</title>
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="no" hidable="no"/>
+        <population included="no" hidable="no"/>
+        <experimentalSetup included="no"/>
+        <sample included="no"/>
+        <independencies included="no"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="no"/>
+    </windows>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="X" index="0" x="167" y="155">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Y" index="1" x="262" y="174">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Z" index="2" x="165" y="274">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="X"/>
+            <parentsFor name="Y"/>
+            <parentsFor name="Z">
+                <parent name="X" index="0"/>
+                <parent name="Y" index="1"/>
+            </parentsFor>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="X" numRows="1" numCols="2">
+                <row>0.5347 0.4653</row>
+            </cpt>
+            <cpt variable="Y" numRows="1" numCols="2">
+                <row>0.4090 0.5910</row>
+            </cpt>
+            <cpt variable="Z" numRows="4" numCols="2">
+                <row>0.4572 0.5428</row>
+                <row>0.1845 0.8155</row>
+                <row>0.6004 0.3996</row>
+                <row>0.3204 0.6796</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+</exercise>

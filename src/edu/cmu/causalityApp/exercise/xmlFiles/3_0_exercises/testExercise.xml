@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exercise name="Test exercise" instructions="You must find the correct graph" goal="graph goal"
+          include_student_guess="false">
+
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <experimentalSetup included="yes" hidable="no"/>
+        <hypotheticalGraph included="yes" hidable="no"/>
+        <manipulatedTrueGraph included="yes" hidable="yes"/>
+        <manipulatedHypotheticalGraph included="yes" hidable="no"/>
+        <population included="no" hidable="no"/>
+        <sample included="no" hidable="no"/>
+        <independencies included="no" hidable="no"/>
+    </windows>
+
+    <bayesNet>
+        <variables>
+            <discreteVariable name="education" index="0">
+                <category name="college" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="happiness" index="1">
+                <category name="very happy" index="0"/>
+                <category name="sad" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="income" index="2">
+                <category name="rich" index="0"/>
+                <category name="poor" index="1"/>
+            </discreteVariable>
+        </variables>
+        <parents>
+            <variable name="education"/>
+            <variable name="happiness">
+                <parent name="education" index="0"/>
+            </variable>
+            <variable name="income">
+                <parent name="education" index="0"/>
+            </variable>
+        </parents>
+        <cpts>
+            <cpt variable="education" numRows="1" numCols="2">
+                <row>0.4617 0.5383</row>
+            </cpt>
+            <cpt variable="happiness" numRows="2" numCols="2">
+                <row>0.1717 0.8283</row>
+                <row>0.3988 0.6012</row>
+            </cpt>
+            <cpt variable="income" numRows="2" numCols="2">
+                <row>0.8471 0.1529</row>
+                <row>0.2451 0.7549</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+
+</exercise>

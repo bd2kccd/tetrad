@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 1.1//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_1_1.dtd">
+<exercise version="3.2" id="eyecolor"
+          instructions="Construct a causal graph (in the hypothetical graph window) in which ParentalEyeColorGene is a common cause of of SonEyeColer and DaughterEyeColor. When you are finished, click on &quot;Check my answer&quot; - the button above the navigation panel on the left."
+          goal="find-correct-graph" include_student_guess="false">
+    <title>eyecolor</title>
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="no" hidable="no"/>
+        <population included="no" hidable="no"/>
+        <experimentalSetup included="no"/>
+        <sample included="no"/>
+        <independencies included="no"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="no"/>
+    </windows>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="ParentalEyeColor" index="0" x="182" y="57">
+                <category name="Blue" index="0"/>
+                <category name="Brown" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="SonEyeColor" index="1" x="71" y="164">
+                <category name="Blue" index="0"/>
+                <category name="Brown" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="DaughterEyeColor" index="2" x="260" y="157">
+                <category name="Blue" index="0"/>
+                <category name="Brown" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="ParentalEyeColor"/>
+            <parentsFor name="SonEyeColor">
+                <parent name="ParentalEyeColor" index="0"/>
+            </parentsFor>
+            <parentsFor name="DaughterEyeColor">
+                <parent name="ParentalEyeColor" index="0"/>
+            </parentsFor>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="ParentalEyeColor" numRows="1" numCols="2">
+                <row>0.4855 0.5145</row>
+            </cpt>
+            <cpt variable="SonEyeColor" numRows="2" numCols="2">
+                <row>0.1214 0.8786</row>
+                <row>0.4691 0.5309</row>
+            </cpt>
+            <cpt variable="DaughterEyeColor" numRows="2" numCols="2">
+                <row>0.5040 0.4960</row>
+                <row>0.4588 0.5412</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+</exercise>

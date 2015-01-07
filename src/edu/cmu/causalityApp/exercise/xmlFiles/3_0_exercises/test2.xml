@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exercise instructions="these are the instructions" goal="find-correct-graph" include_student_guess="false">
+    <windows>
+        <trueGraph included="yes" hidable="no"/>
+        <manipulatedTrueGraph included="yes" hidable="no"/>
+        <population included="yes" hidable="no"/>
+        <experimentalSetup included="yes"/>
+        <sample included="yes"/>
+        <independencies included="yes"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <sem>
+        <semVariables>
+            <continuousVariable name="X"/>
+            <continuousVariable name="W"/>
+            <continuousVariable name="Y"/>
+            <continuousVariable name="Z"/>
+        </semVariables>
+        <edges>
+            <edge causeNode="X" effectNode="Y" value="0.5" fixed="false"/>
+            <edge causeNode="W" effectNode="Y" value="0.6" fixed="false"/>
+            <edge causeNode="Y" effectNode="Z" value="0.7" fixed="false"/>
+        </edges>
+        <marginalErrorDistribution>
+            <normal variable="X" mean="0.0" variance="1.0"/>
+            <normal variable="W" mean="0.0" variance="1.0"/>
+            <normal variable="E_Y" mean="0.0" variance="1.0"/>
+            <normal variable="E_Z" mean="0.0" variance="1.0"/>
+        </marginalErrorDistribution>
+        <jointErrorDistribution/>
+    </sem>
+</exercise>

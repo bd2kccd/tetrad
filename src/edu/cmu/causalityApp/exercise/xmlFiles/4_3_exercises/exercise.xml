@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 4.0//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_4_3.dtd">
+<exercise version="4.3" id="exercise" title="exercise" instructions="asdf" goal="find-correct-graph"
+          include_student_guess="false">
+
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="yes" hidable="yes"/>
+        <population included="yes" hidable="yes"/>
+        <experimentalSetup included="yes"/>
+        <sample included="yes"/>
+        <independencies included="yes"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <experimentalConstraints>
+        <resources total="50000" cost-per-observation="10" cost-per-intervention="100"/>
+        <intervenable-statuses>
+            <intervenable-status variable="X1" intervenable="yes"/>
+            <intervenable-status variable="X2" intervenable="yes"/>
+        </intervenable-statuses>
+    </experimentalConstraints>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="X1" index="0" x="100" y="80">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="X2" index="1" x="140" y="260">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="X1"/>
+            <parentsFor name="X2">
+                <parent name="X1" index="0"/>
+            </parentsFor>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="X1" numRows="1" numCols="2">
+                <row>0.6277 0.3723</row>
+            </cpt>
+            <cpt variable="X2" numRows="2" numCols="2">
+                <row>0.8619 0.1381</row>
+                <row>0.3342 0.6658</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+    <essayQuestions>
+        <question questionText="t1"/>
+        <question questionText="t2"/>
+    </essayQuestions>
+    <essayAnswers>
+        <answer answerText="t1"/>
+        <answer answerText="t2"/>
+    </essayAnswers>
+    <instructorFeedback>
+        <feedback feedbackText="t1"/>
+        <feedback feedbackText="t2"/>
+    </instructorFeedback>
+    <gradeScore>
+        <grade gradeText="t1"/>
+    </gradeScore>
+
+</exercise>

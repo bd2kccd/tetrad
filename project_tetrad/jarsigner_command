@@ -1,0 +1,1 @@
+jarsigner -keystore /Users/josephramsey/Documents/proj/tetrad2/project_tetrad/keystore.ks tetrad-5.0.0-6-experimental.jar "carnegie mellon university - department of philosophy's comodo ca limited id"

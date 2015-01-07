@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 1.1//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_1_1.dtd">
+<exercise version="3.2" id="studyhabits"
+          instructions="Construct a causal graph (in the hypothetical graph window) that represents what you think to be the true causal relations among Study Habits, Amount Learned and Grades. When you are finished, click on &quot;Check my answer&quot; - the button above the navigation panel on the left. "
+          goal="find-correct-graph" include_student_guess="false">
+    <title>studyhabits</title>
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="no" hidable="no"/>
+        <population included="no" hidable="no"/>
+        <experimentalSetup included="no"/>
+        <sample included="no"/>
+        <independencies included="no"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="no"/>
+    </windows>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="Study_Habits" index="0" x="133" y="65">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Amount_Learned" index="1" x="81" y="154">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Grades" index="2" x="265" y="161">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="Study_Habits"/>
+            <parentsFor name="Amount_Learned">
+                <parent name="Study_Habits" index="0"/>
+            </parentsFor>
+            <parentsFor name="Grades">
+                <parent name="Study_Habits" index="0"/>
+                <parent name="Amount_Learned" index="1"/>
+            </parentsFor>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="Study_Habits" numRows="1" numCols="2">
+                <row>0.1355 0.8645</row>
+            </cpt>
+            <cpt variable="Amount_Learned" numRows="2" numCols="2">
+                <row>0.4921 0.5079</row>
+                <row>0.6376 0.3624</row>
+            </cpt>
+            <cpt variable="Grades" numRows="4" numCols="2">
+                <row>0.6424 0.3576</row>
+                <row>0.7460 0.2540</row>
+                <row>0.4149 0.5851</row>
+                <row>0.5396 0.4604</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+</exercise>

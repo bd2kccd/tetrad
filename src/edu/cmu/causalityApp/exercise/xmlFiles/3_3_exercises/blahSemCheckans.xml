@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 1.1//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_1_1.dtd">
+<exercise version="3.3" id="blahSemCheckans" instructions="sadf" goal="find-correct-graph"
+          include_student_guess="true">
+    <title>blahSemCheckans</title>
+    <windows>
+        <trueGraph included="yes" hidable="no"/>
+        <manipulatedTrueGraph included="yes" hidable="no"/>
+        <population included="yes" hidable="no"/>
+        <experimentalSetup included="yes"/>
+        <sample included="yes"/>
+        <independencies included="yes"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <sem>
+        <semVariables>
+            <continuousVariable name="X1" latent="no" x="120" y="80"/>
+            <continuousVariable name="X2" latent="no" x="100" y="200"/>
+            <continuousVariable name="X3" latent="no" x="280" y="160"/>
+        </semVariables>
+        <edges>
+            <edge causeNode="X1" effectNode="X2" value="1.1335107000587277" fixed="false"/>
+            <edge causeNode="X1" effectNode="X3" value="-1.4668263485869693" fixed="false"/>
+        </edges>
+        <marginalErrorDistribution>
+            <normal variable="X1" mean="0.0" variance="2.0511190140673143"/>
+            <normal variable="E_X2" mean="0.0" variance="2.62614364645154"/>
+            <normal variable="E_X3" mean="0.0" variance="2.8662432579776986"/>
+        </marginalErrorDistribution>
+        <jointErrorDistribution/>
+    </sem>
+    <commands>
+        <openWindowCommand editor="Hypothesis Graph"/>
+        <createHyptothesisCommand>
+            <hypGraph name="Hypothesis 1">
+                <hypVariables>
+                    <hypVariable name="X1" type="Measured" centerX="120" centerY="80"/>
+                    <hypVariable name="X2" type="Measured" centerX="100" centerY="200"/>
+                    <hypVariable name="X3" type="Measured" centerX="280" centerY="160"/>
+                </hypVariables>
+                <hypEdges/>
+            </hypGraph>
+        </createHyptothesisCommand>
+        <checkAnswerCommand hypotheticalGraph="Hypothesis 1" isAnswerCorrect="no"
+                            numberOfGuesses="1"/>
+        <checkAnswerCommand hypotheticalGraph="Hypothesis 1" isAnswerCorrect="no"
+                            numberOfGuesses="1"/>
+        <editHypothesisCommand>
+            <hypGraph name="Hypothesis 1">
+                <hypVariables>
+                    <hypVariable name="X1" type="Measured" centerX="120" centerY="80"/>
+                    <hypVariable name="X2" type="Measured" centerX="100" centerY="200"/>
+                    <hypVariable name="X3" type="Measured" centerX="280" centerY="160"/>
+                </hypVariables>
+                <hypEdges>
+                    <hypEdge causeVar="X1" effectVar="X2"/>
+                    <hypEdge causeVar="X1" effectVar="X3"/>
+                </hypEdges>
+            </hypGraph>
+        </editHypothesisCommand>
+        <checkAnswerCommand hypotheticalGraph="Hypothesis 1"  isAnswerCorrect="yes"
+                            numberOfGuesses="2"/>
+    </commands>
+</exercise>

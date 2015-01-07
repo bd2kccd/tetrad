@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- JNLP File for Tetrad application -->
+<jnlp
+    spec="1.0+"
+    codebase="http://www.phil.cmu.edu/tetrad/"
+    href="download/tetrad.jnlp">
+    <information>
+        <title>Tetrad Application</title>
+        <vendor>LSEC, Philosophy Dept, Carnegie Mellon</vendor>
+        <homepage href="index.html"/>
+        <description>Tetrad Application</description>
+        <description kind="short">Tests causal hypotheses in a graphical user interface.</description>
+        <offline-allowed/>
+    </information>
+    <security>
+        <all-permissions/>
+    </security>
+    <resources>
+        <j2se version="1.3+"/>
+        <jar href="download/tetrad-latest.jar"/>
+    </resources>
+    <application-desc main-class="edu.cmu.tetrad.Tetrad">
+        <argument>-Dsun.java2d.ddoffscreen=false</argument>
+    </application-desc>
+</jnlp>

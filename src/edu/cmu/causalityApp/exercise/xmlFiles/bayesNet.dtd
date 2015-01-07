@@ -1,0 +1,37 @@
+<!--
+to use this as part of another dtd, we shouldn't use the xml tag...
+<?xml version="1.0" encoding="UTF-8"?>
+-->
+<!--  BAYES NET -->
+<!ELEMENT bayesNet (bnVariables, parents, cpts)>
+<!ELEMENT bnVariables (discreteVariable+)>
+<!ELEMENT discreteVariable (category+)>
+<!ELEMENT category EMPTY>
+<!ELEMENT parents (parentsFor*)>
+<!ELEMENT parentsFor (parent*)>
+<!ELEMENT parent EMPTY>
+<!ELEMENT cpts (cpt*)>
+<!ELEMENT cpt (row*)>
+<!ELEMENT row (#PCDATA)>
+
+
+<!ATTLIST discreteVariable      name        CDATA #REQUIRED
+                                index       CDATA #REQUIRED
+                                latent      (yes|no) "no"
+                                x           CDATA #IMPLIED
+                                y           CDATA #IMPLIED>
+
+<!ATTLIST category              name        CDATA #REQUIRED
+                                index       CDATA #REQUIRED>
+
+<!ATTLIST parentsFor            name        CDATA #REQUIRED>
+
+<!ATTLIST parent                name        CDATA #REQUIRED
+                                index       CDATA #REQUIRED>
+
+<!ATTLIST cpts                  rowSumTolerance CDATA "0.0001">
+
+<!ATTLIST cpt                   variable        CDATA #REQUIRED
+                                numRows         CDATA #REQUIRED
+                                numCols         CDATA #REQUIRED
+                                >

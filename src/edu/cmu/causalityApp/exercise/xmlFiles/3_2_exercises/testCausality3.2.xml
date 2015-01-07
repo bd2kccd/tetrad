@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ================================================== -->
+<!-- THIS FILE IS USED FOR UNIT TESTING. DO NOT MODIFY! -->
+<!-- ================================================== -->
+
+<!DOCTYPE exercise SYSTEM "causality3.2.dtd">
+
+<exercise
+        version="3.2"
+        id="2"
+        instructions="blah"
+        goal="find-correct-graph"
+        include_student_guess="false">
+    <title>foo</title>
+    <windows>
+        <trueGraph included="yes" hidable="no"/>
+        <manipulatedTrueGraph included="yes" hidable="no"/>
+        <population included="yes" hidable="no"/>
+        <experimentalSetup included="yes"/>
+        <sample included="yes"/>
+        <independencies included="yes"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <sem>
+        <semVariables>
+            <continuousVariable name="X"/>
+            <continuousVariable name="W"/>
+            <continuousVariable name="Y"/>
+            <continuousVariable name="Z"/>
+        </semVariables>
+        <edges>
+            <edge causeNode="X" effectNode="Y" value="0.5" fixed="false"/>
+            <edge causeNode="W" effectNode="Y" value="0.6" fixed="false"/>
+            <edge causeNode="Y" effectNode="Z" value="0.7" fixed="false"/>
+        </edges>
+        <marginalErrorDistribution>
+            <normal variable="X" mean="0.0" variance="1.0"/>
+            <normal variable="W" mean="0.0" variance="1.0"/>
+            <normal variable="E_Y" mean="0.0" variance="1.0"/>
+            <normal variable="E_Z" mean="0.0" variance="1.0"/>
+        </marginalErrorDistribution>
+        <jointErrorDistribution/>
+    </sem>
+
+    <commands>
+        <createHypothesisCommand>
+            <hypGraph name="hyp1">
+                <hypVariables>
+                    <hypVariable name="x" type="measured" centerX="50" centerY="50"/>
+                    <hypVariable name="y" type="measured" centerX="60" centerY="60"/>
+                </hypVariables>
+                <hypEdges>
+                    <hypEdge causeVar="x" effectVar="y"/>
+                </hypEdges>
+            </hypGraph>
+        </createHypothesisCommand>
+
+    </commands>
+
+</exercise>

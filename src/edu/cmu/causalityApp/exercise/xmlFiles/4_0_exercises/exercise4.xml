@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 4.0//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_4_0.dtd">
+<exercise version="4.0" id="exercise4" title="exercise4" instructions="asdf" goal="find-correct-graph"
+          include_student_guess="false">
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="yes" hidable="yes"/>
+        <population included="yes" hidable="yes"/>
+        <experimentalSetup included="yes"/>
+        <sample included="yes"/>
+        <independencies included="yes"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <experimentalConstraints>
+        <resources total="50000" cost-per-observation="10" cost-per-intervention="100"/>
+        <intervenable-statuses>
+            <intervenable-status variable="X1" intervenable="yes"/>
+            <intervenable-status variable="X2" intervenable="yes"/>
+        </intervenable-statuses>
+    </experimentalConstraints>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="X1" index="0" x="60" y="100">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="X2" index="1" x="140" y="240">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="X1"/>
+            <parentsFor name="X2">
+                <parent name="X1" index="0"/>
+            </parentsFor>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="X1" numRows="1" numCols="2">
+                <row>0.7057 0.2943</row>
+            </cpt>
+            <cpt variable="X2" numRows="2" numCols="2">
+                <row>0.7204 0.2796</row>
+                <row>0.2656 0.7344</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+    <commands>
+        <startCommand/>
+        <openWindowCommand editor="Experimental Setup"/>
+        <createExperimentalSetupCommand>
+            <expSetup name="Exp-Setup 1">
+                <expVariable name="X1" ignored="yes" manipulation="none"/>
+                <expVariable name="X2" ignored="no" manipulation="randomized"/>
+            </expSetup>
+        </createExperimentalSetupCommand>
+        <createSampleCommand experimentalSetupName="Exp-Setup 1" sampleName="S100" sampleSize="100"
+                             sampleSeed="1136541427400" sampleCost="10000"/>
+        <openWindowCommand editor="Sample"/>
+
+        <createHistogramCommand x="180" y="130">
+            <histogram experimentalSetup="Exp-Setup 1" sample="S100">
+                <chartedVars>
+                    <chartedVar name="X2"/>
+                </chartedVars>
+                <conditionedVars>
+                    <conditionedVar name="X2" value="0"/>
+                </conditionedVars>
+            </histogram>
+        </createHistogramCommand>
+        <closeWindowCommand editor="Sample"/>
+        <openWindowCommand editor="Hypothesis Graph"/>
+        <createHypothesisCommand>
+            <hypGraph name="Hypothesis1">
+                <hypVariables>
+                    <hypVariable name="X1" type="Measured" centerX="60" centerY="100"/>
+                    <hypVariable name="X2" type="Measured" centerX="140" centerY="240"/>
+                </hypVariables>
+                <hypEdges>
+                    <hypEdge causeVar="X1" effectVar="X2"/>
+                </hypEdges>
+            </hypGraph>
+        </createHypothesisCommand>
+    </commands>
+</exercise>

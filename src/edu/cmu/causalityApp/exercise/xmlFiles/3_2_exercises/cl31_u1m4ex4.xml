@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 1.1//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_1_1.dtd">
+<exercise version="3.2" id="cl31_u1m4ex4"
+          instructions="Construct a graph (in the hypothesis graph window) in which there is a causal chain from Y to X to Z. Once you are done, click on &quot;Check my answer&quot;."
+          goal="find-correct-graph" include_student_guess="false">
+    <title>cl31_u1m4ex4</title>
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="no" hidable="no"/>
+        <population included="no" hidable="no"/>
+        <experimentalSetup included="no"/>
+        <sample included="no"/>
+        <independencies included="no"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="no"/>
+    </windows>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="Y" index="0" x="52" y="69">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="X" index="1" x="177" y="100">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Z" index="2" x="306" y="67">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="Y"/>
+            <parentsFor name="X">
+                <parent name="Y" index="0"/>
+            </parentsFor>
+            <parentsFor name="Z">
+                <parent name="X" index="0"/>
+            </parentsFor>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="Y" numRows="1" numCols="2">
+                <row>0.3816 0.6184</row>
+            </cpt>
+            <cpt variable="X" numRows="2" numCols="2">
+                <row>0.3515 0.6485</row>
+                <row>0.2762 0.7238</row>
+            </cpt>
+            <cpt variable="Z" numRows="2" numCols="2">
+                <row>0.8059 0.1941</row>
+                <row>0.3911 0.6089</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+</exercise>

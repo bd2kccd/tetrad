@@ -1,0 +1,37 @@
+<!--
+To use this dtd as part of another, we shouldn't include the xml tag...
+<?xml version="1.0" encoding="UTF-8"?>
+ -->
+<!--  SEM -->
+<!ELEMENT sem  (semVariables, edges, marginalErrorDistribution, jointErrorDistribution)>
+<!ELEMENT semVariables (continuousVariable+)>
+<!ELEMENT continuousVariable EMPTY>
+<!ELEMENT edges (edge*)>
+<!ELEMENT edge EMPTY>
+<!ELEMENT marginalErrorDistribution (normal | uniform)*>
+<!ELEMENT normal EMPTY>
+<!ELEMENT uniform EMPTY>
+<!ELEMENT jointErrorDistribution (covariance)*>
+<!ELEMENT covariance EMPTY>
+
+<!ATTLIST continuousVariable    name        CDATA #REQUIRED
+                                latent      (yes|no) "no"
+                                x           CDATA #IMPLIED
+                                y           CDATA #IMPLIED>
+
+<!ATTLIST edge                  causeNode   CDATA #REQUIRED
+                                effectNode  CDATA #REQUIRED
+                                value       CDATA "0.5"
+                                fixed       (true|false) "false">
+
+<!ATTLIST normal                variable    CDATA #REQUIRED
+                                mean        CDATA "0.0"
+                                variance    CDATA "1.0">
+
+<!ATTLIST uniform               variable    CDATA #REQUIRED
+                                lower       CDATA "0.0"
+                                upper       CDATA "1.0">
+
+<!ATTLIST covariance            node1       CDATA #REQUIRED
+                                node2       CDATA #REQUIRED
+                                value       CDATA "0.5">

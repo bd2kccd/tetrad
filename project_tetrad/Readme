@@ -1,0 +1,55 @@
+If you would like to check out Tetrad from the command line, follow this example:
+
+svn checkout svn+ssh://[username]@www.phil.cmu.edu/home/svnroot/tetrad/trunk tetrad
+
+This assumes you have svn installed. If you don't have svn installed and are on
+a linux machine, then grab it from the cloud. If you are on Windows, do a full
+install of Cygwin. If you are on a mac you have it. OR ignore all of that,
+install Intellij first, and use the Subversion checkout in Intellij. You
+can do this by selecting Version Control--> Checkout from Version Control
+and substituting the relevant pieces of the above command into the interface
+holes. Make sure you check out the trunk; otherwise you will get a lot of
+useless branches, and then what will you do. (You will delete your checkout
+and try again, checking out the trunk.)
+
+You will also need to check out and install the latest Java SDK from SUN,
+which you can get at java.sun.com, unless you have a Mac, in which case you just
+select Software Update. Make sure you figure out where it installed to; you
+will need this.
+
+Tetrad is set up to be loaded and run in Intellij IDEA (v. 8.1.3 currently,
+4/27/2007). After you've obtained the code etc. in the .../tetrad directory,
+to set it up in IDEA do the following:
+
+1. File-->New Project from Scratch, if you checked it out already.
+
+2. Fill in:
+
+    * Name = Tetrad
+    * Project File Location = path to the .../tetrad directory.
+
+3. Accept all default to the end of the form, click Finish.
+
+4. Click File-->Project Structure.
+
+5. For the project SDK, create a "new" one. This is where you need to
+put the location of the SDK (or JDK, same thing).
+
+6. Click Ant Build on the right border. Click the little plus.
+Select .../tetrad/build.xml. When it appears in the Ant Build columns,
+right click on it. Select Properties.  Click Additional Classpath.
+Add all the jars in /tetrad/lib.
+
+10. Double click the compile target in Ant to run it.
+
+11. Click on Project Structure again, then on Modules, then on Paths.
+Click "Use Module Compile Output Path" and put the path to this file:
+
+    /home/jdramsey/proj/tetrad/build/tetrad/classes
+
+or whatever that is relative to your machine.
+
+That should be enough to get started. You can compile using either
+Ant or the Build menu in Intellij. If you want to launch the GUI, then
+run the copyresources target in Ant, then launch away. (This assume you
+followed the instructions so far and didn't just wing it. *wink*)

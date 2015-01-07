@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!ELEMENT exercise (title, windows, (bayesNet | sem), commands*)>
+
+<!ATTLIST exercise
+    version CDATA #REQUIRED
+    id CDATA #REQUIRED
+    instructions CDATA #REQUIRED
+    goal (find-correct-graph | find-correct-manipulated-graph | find-independencies) "find-correct-graph"
+    include_student_guess (true | false) "false">
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT windows ( correctGraph,
+                    correctManipulatedGraph,
+                    population,
+                    experimentalSetup,
+                    sample,
+                    independencies,
+                    hypotheticalGraph,
+                    hypotheticalManipulatedGraph)>
+    <!ELEMENT correctGraph                  EMPTY>
+    <!ELEMENT correctManipulatedGraph       EMPTY>
+    <!ELEMENT population                    EMPTY>
+    <!ELEMENT sample                        EMPTY>
+    <!ELEMENT experimentalSetup             EMPTY>
+    <!ELEMENT hypotheticalGraph             EMPTY>
+    <!ELEMENT hypotheticalManipulatedGraph  EMPTY>
+    <!ELEMENT independencies                EMPTY>
+
+<!ATTLIST correctGraph                  included (yes|no) "yes"  hidable  (yes|no) "no">
+<!ATTLIST correctManipulatedGraph       included (yes|no) "yes"  hidable  (yes|no) "no">
+<!ATTLIST population                    included (yes|no) "yes"  hidable  (yes|no) "no">
+<!ATTLIST experimentalSetup             included (yes|no) "yes">
+<!ATTLIST hypotheticalGraph             included (yes|no) "yes">
+<!ATTLIST hypotheticalManipulatedGraph  included (yes|no) "yes">
+<!ATTLIST sample                        included (yes|no) "yes">
+<!ATTLIST independencies                included (yes|no) "yes">
+
+
+<!--  BAYES NET -->
+<!ELEMENT bayesNet (bnVariables, parents, cpts)>
+<!ELEMENT bnVariables (discreteVariable+)>
+<!ELEMENT discreteVariable (category+)>
+<!ELEMENT category EMPTY>
+<!ELEMENT parents (parentsFor*)>
+<!ELEMENT parentsFor (parent*)>
+<!ELEMENT parent EMPTY>
+<!ELEMENT cpts (cpt*)>
+<!ELEMENT cpt (row*)>
+<!ELEMENT row (#PCDATA)>
+
+
+<!ATTLIST discreteVariable      name        CDATA #REQUIRED
+                                index       CDATA #REQUIRED
+                                latent      (yes|no) "no"
+                                x           CDATA #IMPLIED
+                                y           CDATA #IMPLIED>
+
+<!ATTLIST category              name        CDATA #REQUIRED
+                                index       CDATA #REQUIRED>
+
+<!ATTLIST parentsFor            name        CDATA #REQUIRED>
+
+<!ATTLIST parent                name        CDATA #REQUIRED
+                                index       CDATA #REQUIRED>
+
+<!ATTLIST cpts                  rowSumTolerance CDATA "0.0001">
+
+<!ATTLIST cpt                   variable        CDATA #REQUIRED
+                                numRows         CDATA #REQUIRED
+                                numCols         CDATA #REQUIRED>
+
+<!--  SEM -->
+<!ELEMENT sem  (semVariables, edges, marginalErrorDistribution, jointErrorDistribution)>
+<!ELEMENT semVariables (continuousVariable+)>
+<!ELEMENT continuousVariable EMPTY>
+<!ELEMENT edges (edge*)>
+<!ELEMENT edge EMPTY>
+<!ELEMENT marginalErrorDistribution (normal | uniform)*>
+<!ELEMENT normal EMPTY>
+<!ELEMENT uniform EMPTY>
+<!ELEMENT jointErrorDistribution (covariance)*>
+<!ELEMENT covariance EMPTY>
+
+<!ATTLIST continuousVariable    name        CDATA #REQUIRED
+                                latent      (yes|no) "no"
+                                x           CDATA #IMPLIED
+                                y           CDATA #IMPLIED>
+
+<!ATTLIST edge                  causeNode   CDATA #REQUIRED
+                                effectNode  CDATA #REQUIRED
+                                value       CDATA "0.5"
+                                fixed       (true|false) "false">
+
+<!ATTLIST normal                variable    CDATA #REQUIRED
+                                mean        CDATA "0.0"
+                                variance    CDATA "1.0">
+
+<!ATTLIST uniform               variable    CDATA #REQUIRED
+                                lower       CDATA "0.0"
+                                upper       CDATA "1.0">
+
+<!ATTLIST covariance            node1       CDATA #REQUIRED
+                                node2       CDATA #REQUIRED>
+
+
+<!--  ============================== COMMANDS =====================================
+      command section is a list of actions the user has done in using the causality lab,
+      this is used to save work, replay the students actions, and scaffold exercises
+ -->
+<!ELEMENT commands (
+    createExperimentalSetupCommand |
+    createHistorgramCommand |
+    createHypothesisCommand |
+    createSampleCommand |
+    deleteExperimentalSetupCommand |
+    deleteHypothesisCommand |
+    editHypothesisCommand |
+    finishSessionCommand |
+    openWindowCommand)*>
+
+<!ELEMENT createExperimentalSetupCommand    (expSetup)>
+<!ELEMENT createHistogramCommand            (histogram)>
+<!ELEMENT createHypothesisCommand           (hypGraph)>
+<!ELEMENT createSampleCommand               EMPTY>
+<!ELEMENT deleteExperimentalSetupCommand    EMPTY>
+<!ELEMENT deleteHypothesisCommand           EMPTY>
+<!ELEMENT editHypothesisCommand             (hypGraph)>
+<!ELEMENT finishSessionCommand              EMPTY>
+<!ELEMENT openWindowCommand                 EMPTY>
+
+<!ATTLIST createHistorgramCommand           x        CDATA #REQUIRED
+                                            y        CDATA #REQUIRED>
+<!ATTLIST createSampleCommand               experimentalSetupName   CDATA   #REQUIRED
+                                            sampleName              CDATA   #REQUIRED
+                                            sampleSize              CDATA   #REQUIRED>
+<!ATTLIST deleteExperimentalSetupCommand    experimentName          CDATA   #REQUIRED>
+<!ATTLIST deleteHypothesisCommand           hypothesisName          CDATA   #REQUIRED>
+
+
+<!-- experimental setup -->
+<!ELEMENT expSetup (expVariable+)>
+<!ELEMENT expVariable EMPTY>
+<!ATTLIST expVariable           name            CDATA                    #REQUIRED
+                                ignored         (yes|no)                 "yes"
+                                manipulation    (locked|randomized|none) "none"
+                                lockedAt        CDATA                    #IMPLIED>
+
+<!-- hypothetical graph -->
+<!ELEMENT hypGraph (hypVariables, hypEdges)>
+<!ELEMENT hypVariables (hypVariable+)>
+<!ELEMENT hypVariable EMPTY>
+<!ELEMENT hypEdges (hypEdge+)>
+<!ELEMENT hypEdge EMPTY>          
+<!ATTLIST hypGraph              name            CDATA                   #REQUIRED>
+<!ATTLIST hypVariable           name            CDATA                   #REQUIRED
+                                type            (measured|latent|error) "measured"
+                                centerX         CDATA                   #IMPLIED
+                                centerY         CDATA                   #IMPLIED>
+<!ATTLIST hypEdge               causeVar        CDATA                   #REQUIRED
+                                effectVar       CDATA                   #REQUIRED>
+
+<!-- historygram -->
+<!--
+<histogram sample="c99">
+    <chartedVars>
+        <chartedVar name="A">
+        <chartedVar name="B">
+    </chartedVars>
+    <conditionedVars>
+        <conditionedVar name="C" value="0">
+    </conditionedVars>
+</histogram>
+-->
+<!ELEMENT histogram (chartedVars, conditionedVars)>
+<!ELEMENT chartedVars (chartedVar+)>
+<!ELEMENT chartedVar EMPTY>
+<!ELEMENT conditionedVars (conditionedVar*)>
+<!ELEMENT conditionedVar EMPTY>
+
+<!ATTLIST histogram         experimentalSetup   CDATA #REQUIRED
+                            sample              CDATA #REQUIRED>
+<!ATTLIST chartedVar        name                CDATA #REQUIRED>
+<!ATTLIST conditionedVar    name                CDATA #REQUIRED
+                            value               CDATA #REQUIRED>
+
+
+<!--scatterplot-->

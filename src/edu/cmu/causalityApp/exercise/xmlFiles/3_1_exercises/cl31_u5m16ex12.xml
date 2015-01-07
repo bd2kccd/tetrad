@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 1.0//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_1_0b1.dtd">
+<exercise id="cl31_u5m16ex12"
+          instructions="Set up an experiment in which the variable TV Violence is randomized, and the variable Aggresive is locked at yes. When you are done setting up this experiment, fill in the column &quot;student guesses&quot; in the predictions and results window."
+          goal="find-correct-graph" include_student_guess="true">
+    <title>cl31_u5m16ex12</title>
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="yes" hidable="yes"/>
+        <population included="yes" hidable="no"/>
+        <experimentalSetup included="yes"/>
+        <sample included="no"/>
+        <independencies included="yes"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="Aggressive" index="0" x="89" y="94">
+                <category name="Yes" index="0"/>
+                <category name="No" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Real_violence" index="1" x="228" y="185">
+                <category name="Often" index="0"/>
+                <category name="Rarely" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="TV_violenence" index="2" x="135" y="318">
+                <category name="Often" index="0"/>
+                <category name="Rarely" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="Aggressive"/>
+            <parentsFor name="Real_violence">
+                <parent name="Aggressive" index="0"/>
+            </parentsFor>
+            <parentsFor name="TV_violenence">
+                <parent name="Aggressive" index="0"/>
+            </parentsFor>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="Aggressive" numRows="1" numCols="2">
+                <row>0.4000 0.6000</row>
+            </cpt>
+            <cpt variable="Real_violence" numRows="2" numCols="2">
+                <row>0.3000 0.7000</row>
+                <row>0.1200 0.8800</row>
+            </cpt>
+            <cpt variable="TV_violenence" numRows="2" numCols="2">
+                <row>0.8000 0.2000</row>
+                <row>0.3000 0.7000</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+</exercise>

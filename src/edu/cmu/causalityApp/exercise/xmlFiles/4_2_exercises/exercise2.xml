@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 4.0//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_4_2.dtd">
+<exercise version="4.2" id="causevsassoc2" title="causevsassoc2"
+          instructions="This exercise simulates the Harry is Late story. Again, take the same basic strategy as in the Bert and Russell story. Set-up two experiments, one in which all variables are measured and passively observed and another in which all are measured and Hurrying is randomized. Collect a data set from each with a large sample size (several hundred), and then view two histograms for each data set: a) ArriveLate conditional on Hurrying=yes and b) ArriveLate conditional on Hurrying=no. 0x0a0x0aAnswer the essay question, and then submit your work."
+          include_student_guess="false">
+    <windows>
+        <trueGraph included="yes" hidable="no"/>
+        <manipulatedTrueGraph included="yes" hidable="no"/>
+        <population included="yes" hidable="no"/>
+        <experimentalSetup included="yes"/>
+        <sample included="yes"/>
+        <independencies included="no"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <experimentalConstraints>
+        <intervenable-statuses>
+            <intervenable-status variable="Leavelate" intervenable="yes"/>
+            <intervenable-status variable="Hurry" intervenable="yes"/>
+            <intervenable-status variable="ArriveLate" intervenable="yes"/>
+        </intervenable-statuses>
+    </experimentalConstraints>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="Leavelate" index="0" x="140" y="80">
+                <category name="Yes" index="0"/>
+                <category name="No" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Hurry" index="1" x="60" y="180">
+                <category name="Yes" index="0"/>
+                <category name="No" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="ArriveLate" index="2" x="230" y="180">
+                <category name="Yes" index="0"/>
+                <category name="No" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="Leavelate"/>
+            <parentsFor name="Hurry">
+                <parent name="Leavelate" index="0"/>
+            </parentsFor>
+            <parentsFor name="ArriveLate">
+                <parent name="Leavelate" index="0"/>
+                <parent name="Hurry" index="1"/>
+            </parentsFor>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="Leavelate" numRows="1" numCols="2">
+                <row>0.5000 0.5000</row>
+            </cpt>
+            <cpt variable="Hurry" numRows="2" numCols="2">
+                <row>0.8000 0.2000</row>
+                <row>0.2000 0.8000</row>
+            </cpt>
+            <cpt variable="ArriveLate" numRows="4" numCols="2">
+                <row>0.5000 0.5000</row>
+                <row>0.8000 0.2000</row>
+                <row>0.1000 0.9000</row>
+                <row>0.2000 0.8000</row>
+            </cpt>
+
+        </cpts>
+
+    </bayesNet>
+    <essayQuestions>
+        <question
+                questionText="Describe the results for the four histograms. Explain the difference. Why do they differ across the different experimental set-ups?"/>
+    </essayQuestions>
+    <essayAnswers>
+        <answer answerText="Please enter your answer here "/>
+    </essayAnswers>
+    <instructorFeedback/>
+    <commands>
+        <startCommand/>
+        <openWindowCommand editor="Experimental Setup"/>
+        <createExperimentalSetupCommand>
+            <expSetup name="Exp-Setup 1">
+                <expVariable name="Leavelate" ignored="no" manipulation="none"/>
+                <expVariable name="Hurry" ignored="no" manipulation="none"/>
+                <expVariable name="ArriveLate" ignored="no" manipulation="none"/>
+            </expSetup>
+        </createExperimentalSetupCommand>
+        <createSampleCommand experimentalSetupName="Exp-Setup 1" sampleName="S100" sampleSize="100"
+                             sampleSeed="1174103461666" sampleCost="-1"/>
+    </commands>
+
+</exercise>

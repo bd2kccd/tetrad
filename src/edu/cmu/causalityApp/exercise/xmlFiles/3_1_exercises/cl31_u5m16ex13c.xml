@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 1.0//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_1_0b1.dtd">
+<exercise id="cl31_u5m16ex13c"
+          instructions="Set up experiments to figure out the graph between the variables Diet, Exercise and Weight. Try to identify the true graph by randomizing and/or locking particular variables. Once you have constructed the graph in the hypothetical graph window you can check your answer. Make sure your sample sizes are large enough and it might be helpful to construct a couple of hypothesis graphs so that you can easily compare the independence relations they entail in the predictions and results window."
+          goal="find-correct-graph" include_student_guess="false">
+    <title>cl31_u5m16ex13c</title>
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="yes" hidable="yes"/>
+        <population included="yes" hidable="yes"/>
+        <experimentalSetup included="yes"/>
+        <sample included="yes"/>
+        <independencies included="yes"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="Diet" index="0" x="72" y="89">
+                <category name="High_Fat" index="0"/>
+                <category name="Low_Fat" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Exercise" index="1" x="151" y="185">
+                <category name="Often" index="0"/>
+                <category name="Rarely" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Weight" index="2" x="247" y="262">
+                <category name="Overweight" index="0"/>
+                <category name="Normal" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="Diet"/>
+            <parentsFor name="Exercise">
+                <parent name="Diet" index="0"/>
+            </parentsFor>
+            <parentsFor name="Weight">
+                <parent name="Exercise" index="0"/>
+            </parentsFor>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="Diet" numRows="1" numCols="2">
+                <row>0.4500 0.5500</row>
+            </cpt>
+            <cpt variable="Exercise" numRows="2" numCols="2">
+                <row>0.3200 0.6800</row>
+                <row>0.6200 0.3800</row>
+            </cpt>
+            <cpt variable="Weight" numRows="2" numCols="2">
+                <row>0.3500 0.6500</row>
+                <row>0.5500 0.4500</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+</exercise>

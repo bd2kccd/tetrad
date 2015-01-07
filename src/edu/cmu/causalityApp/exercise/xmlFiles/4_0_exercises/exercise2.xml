@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 4.0//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_4_0.dtd">
+<exercise version="4.0" id="exercise2" title="exercise2" instructions="asdf" goal="find-correct-graph"
+          include_student_guess="false">
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="yes" hidable="yes"/>
+        <population included="yes" hidable="yes"/>
+        <experimentalSetup included="yes"/>
+        <sample included="yes"/>
+        <independencies included="yes"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <experimentalConstraints>
+        <intervenable-statuses>
+            <intervenable-status variable="X1" intervenable="yes"/>
+            <intervenable-status variable="X2" intervenable="yes"/>
+        </intervenable-statuses>
+    </experimentalConstraints>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="X1" index="0" x="80" y="60">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="X2" index="1" x="140" y="240">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="X1"/>
+            <parentsFor name="X2">
+                <parent name="X1" index="0"/>
+            </parentsFor>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="X1" numRows="1" numCols="2">
+                <row>0.9612 0.0388</row>
+            </cpt>
+            <cpt variable="X2" numRows="2" numCols="2">
+                <row>0.6260 0.3740</row>
+                <row>0.1538 0.8462</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+</exercise>

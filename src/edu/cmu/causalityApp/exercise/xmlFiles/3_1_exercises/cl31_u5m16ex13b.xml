@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 1.0//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_1_0b1.dtd">
+<exercise id="cl31_u5m16ex13b"
+          instructions="Set up experiments to figure out the graph between the variables X, Y and Z. Try to identify the true graph by randomizing and/or locking particular variables. Once you have constructed the graph in the hypothetical graph window you can check your answer. Make sure your sample sizes are large enough. It might also be helpful to construct a variety of hypothesis graphs so that you can easily compare independence relations in the predictions and results window."
+          goal="find-correct-graph" include_student_guess="false">
+    <title>cl31_u5m16ex13b</title>
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="yes" hidable="yes"/>
+        <population included="yes" hidable="yes"/>
+        <experimentalSetup included="yes"/>
+        <sample included="yes"/>
+        <independencies included="yes"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="X" index="0" x="184" y="190">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Y" index="1" x="153" y="279">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Z" index="2" x="330" y="335">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="X">
+                <parent name="Y" index="0"/>
+            </parentsFor>
+            <parentsFor name="Y">
+                <parent name="Z" index="0"/>
+            </parentsFor>
+            <parentsFor name="Z"/>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="X" numRows="2" numCols="2">
+                <row>0.7146 0.2854</row>
+                <row>0.6751 0.3249</row>
+            </cpt>
+            <cpt variable="Y" numRows="2" numCols="2">
+                <row>0.2378 0.7622</row>
+                <row>0.5680 0.4320</row>
+            </cpt>
+            <cpt variable="Z" numRows="1" numCols="2">
+                <row>0.4787 0.5213</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+</exercise>

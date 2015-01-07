@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 1.1//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_1_1.dtd">
+<exercise version="3.3" id="blahSem" instructions="sadf" goal="find-correct-graph"
+          include_student_guess="true">
+    <title>blahSem</title>
+    <windows>
+        <trueGraph included="yes" hidable="no"/>
+        <manipulatedTrueGraph included="yes" hidable="no"/>
+        <population included="yes" hidable="no"/>
+        <experimentalSetup included="yes"/>
+        <sample included="yes"/>
+        <independencies included="yes"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <sem>
+        <semVariables>
+            <continuousVariable name="X1" latent="no" x="120" y="80"/>
+            <continuousVariable name="X2" latent="no" x="100" y="200"/>
+            <continuousVariable name="X3" latent="no" x="280" y="160"/>
+        </semVariables>
+        <edges>
+            <edge causeNode="X1" effectNode="X2" value="1.1335107000587277" fixed="false"/>
+            <edge causeNode="X1" effectNode="X3" value="-1.4668263485869693" fixed="false"/>
+        </edges>
+        <marginalErrorDistribution>
+            <normal variable="X1" mean="0.0" variance="2.0511190140673143"/>
+            <normal variable="E_X2" mean="0.0" variance="2.62614364645154"/>
+            <normal variable="E_X3" mean="0.0" variance="2.8662432579776986"/>
+        </marginalErrorDistribution>
+        <jointErrorDistribution/>
+    </sem>
+</exercise>

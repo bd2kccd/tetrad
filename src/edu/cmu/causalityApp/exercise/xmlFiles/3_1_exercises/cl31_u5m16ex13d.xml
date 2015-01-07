@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise PUBLIC "-//Carnegie Mellon University//DTD Causality Lab Assignment 1.0//EN"
+        "http://oli.web.cmu.edu/dtd/cmu_phil_cl_exercise_1_0b1.dtd">
+<exercise id="cl31_u5m16ex13d"
+          instructions="Use the Causality Lab to figure out the causal graph among the variables X, Y, Z, and W. There are only 27 possible graphs among 3 variables, but 216 possibilities among 4 variables, so guessing will be hopeless. Be systematic about setting up experiments and eliminating possibilities. Draw the graph that you think explains your results in the Hypothesize Graph window, and when you are done, check your answer. Make sure your sample sizes are large enough and it might be helpful to construct a couple of hypothesis graphs so that you can easily compare the independence relations they entail in the predictions and results window."
+          goal="find-correct-graph" include_student_guess="false">
+    <title>cl31_u5m16ex13d</title>
+    <windows>
+        <trueGraph included="yes" hidable="yes"/>
+        <manipulatedTrueGraph included="yes" hidable="yes"/>
+        <population included="yes" hidable="yes"/>
+        <experimentalSetup included="yes"/>
+        <sample included="yes"/>
+        <independencies included="yes"/>
+        <hypotheticalGraph included="yes"/>
+        <manipulatedHypotheticalGraph included="yes"/>
+    </windows>
+    <bayesNet>
+        <bnVariables>
+            <discreteVariable name="X" index="0" x="61" y="61">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Y" index="1" x="218" y="133">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="Z" index="2" x="65" y="254">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+            <discreteVariable name="W" index="3" x="220" y="282">
+                <category name="0" index="0"/>
+                <category name="1" index="1"/>
+            </discreteVariable>
+        </bnVariables>
+        <parents>
+            <parentsFor name="X">
+                <parent name="Z" index="0"/>
+            </parentsFor>
+            <parentsFor name="Y">
+                <parent name="Z" index="0"/>
+            </parentsFor>
+            <parentsFor name="Z"/>
+            <parentsFor name="W">
+                <parent name="Z" index="0"/>
+            </parentsFor>
+        </parents>
+        <cpts rowSumTolerance="0.0001">
+            <cpt variable="X" numRows="2" numCols="2">
+                <row>0.6251 0.3749</row>
+                <row>0.4318 0.5682</row>
+            </cpt>
+            <cpt variable="Y" numRows="2" numCols="2">
+                <row>0.4055 0.5945</row>
+                <row>0.7026 0.2974</row>
+            </cpt>
+            <cpt variable="Z" numRows="1" numCols="2">
+                <row>0.5416 0.4584</row>
+            </cpt>
+            <cpt variable="W" numRows="2" numCols="2">
+                <row>0.8628 0.1372</row>
+                <row>0.4782 0.5218</row>
+            </cpt>
+        </cpts>
+    </bayesNet>
+</exercise>
